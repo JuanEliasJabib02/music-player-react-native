@@ -15,17 +15,19 @@ export default function TabsNavigation() {
 				headerShown: false,
 				tabBarStyle: {
 					position: 'absolute',
-					borderTopLeftRadius: 100,
-					borderTopRightRadius: 100,
+					borderTopLeftRadius: 20,
+					borderTopRightRadius: 20,
 					borderTopWidth: 0,
 					paddingTop: 8,
 				},
 				tabBarBackground: () => (
 					<BlurView
-						intensity={92}
+						intensity={20}
 						style={{
 							...StyleSheet.absoluteFillObject,
 							overflow: 'hidden',
+							borderTopLeftRadius: 20,
+							borderTopRightRadius: 20,
 						}}
 					/>
 				),
