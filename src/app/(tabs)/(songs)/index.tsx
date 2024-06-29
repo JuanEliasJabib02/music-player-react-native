@@ -1,10 +1,6 @@
 import { defaultStyles } from '@/styles'
 import { Text, View } from 'react-native'
 
-export default function HomeScreen() {
-	return (
-		<View style={defaultStyles.container}>
-			<Text style={defaultStyles.text}>Songs</Text>
-		</View>
-	)
+export default function SongsScreen() {
+	return <View style={defaultStyles.container}></View>
 }
