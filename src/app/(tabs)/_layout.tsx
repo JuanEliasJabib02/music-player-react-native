@@ -2,6 +2,7 @@ import { colors, fontSize } from '@/constants/tokens'
 import { BlurView } from 'expo-blur'
 import { Tabs } from 'expo-router'
 import { StyleSheet } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
 
 export default function TabsNavigation() {
 	return (
@@ -33,8 +34,20 @@ export default function TabsNavigation() {
 				),
 			}}
 		>
-			<Tabs.Screen name="(songs)" />
-			<Tabs.Screen name="profile" />
+			<Tabs.Screen
+				name="(songs)"
+				options={{
+					title: 'Songs',
+					tabBarIcon: () => <FontAwesome name="music" size={20} color={colors.text} />,
+				}}
+			/>
+			<Tabs.Screen
+				name="profile"
+				options={{
+					title: 'Mi perfil',
+					tabBarIcon: () => <FontAwesome name="user" size={20} color={colors.text} />,
+				}}
+			/>
 		</Tabs>
 	)
 }
