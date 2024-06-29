@@ -13,9 +13,16 @@ export default function TabsNavigation() {
 					fontWeight: '500',
 				},
 				headerShown: false,
+				tabBarStyle: {
+					position: 'absolute',
+					borderTopLeftRadius: 100,
+					borderTopRightRadius: 100,
+					borderTopWidth: 0,
+					paddingTop: 8,
+				},
 				tabBarBackground: () => (
 					<BlurView
-						intensity={95}
+						intensity={92}
 						style={{
 							...StyleSheet.absoluteFillObject,
 							overflow: 'hidden',

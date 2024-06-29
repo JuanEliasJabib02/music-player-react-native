@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 export default function ProfileScreen() {
 	return (
 		<View style={defaultStyles.container}>
-			<Text>Profile Screen</Text>
+			<Text style={defaultStyles.text}>Profile Screen</Text>
 		</View>
 	)
 }
