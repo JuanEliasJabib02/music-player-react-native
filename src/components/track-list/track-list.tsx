@@ -7,7 +7,7 @@ import useSWR from 'swr'
 sensitive data must be saved in .env(scripted env)
 */
 const API_KEY = 'c19c47264b0dfd0973d63aa54cb6788c'
-const URL = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=spain&api_key=${API_KEY}&format=json`
+const URL = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=colombia&api_key=${API_KEY}&format=json`
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
