@@ -11,6 +11,9 @@ export default function SongsScreenLayout() {
 					name="index"
 					options={{
 						headerTitle: 'Songs',
+						contentStyle: {
+							backgroundColor: '#000',
+						},
 						...StackScreenWithSearchBar,
 					}}
 				/>

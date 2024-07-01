@@ -3,7 +3,7 @@ import { useHeaderHeight } from '@react-navigation/elements'
 import { Text, View } from 'react-native'
 
 export default function SongsScreen() {
-	const headerHeight = useHeaderHeight() // Obtener la altura del encabezado
+	const headerHeight = useHeaderHeight()
 
 	return (
 		<View style={[defaultStyles.container, { marginTop: headerHeight }]}>
