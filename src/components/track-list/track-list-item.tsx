@@ -10,8 +10,9 @@ type TracksListItemProps = {
 }
 
 export default function TrackListItem({ track, onTrackSelect }: TracksListItemProps) {
-	const isActiveTrack = false
+	const activeTrack = useActiveTrack()
 
+	const isActiveTrack = activeTrack?.title === track.title
 	return (
 		<TouchableHighlight onPress={() => onTrackSelect(track)}>
 			<View style={styles.trackItemContainer}>
