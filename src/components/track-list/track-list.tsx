@@ -35,7 +35,8 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 	return (
 		<View style={styles.container}>
 			<FlatList
-				data={data.tracks.track}
+				/* I use 15 insteand 10 just to show the scroll */
+				data={data.tracks.track.slice(0, 15)}
 				keyExtractor={(item) => item.mbid || item.name}
 				renderItem={({ item: track }) => <TrackListItem track={track as Track} />}
 				{...flatlistProps}
