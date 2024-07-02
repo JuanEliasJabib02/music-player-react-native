@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import useSWR from 'swr'
+import TrackListItem from './track-list-item'
 
 /* Only because this is a interview i gonna keep this apikey visible
 
@@ -35,12 +36,7 @@ export default function TrackList() {
 			<FlatList
 				data={data.tracks.track}
 				keyExtractor={(item) => item.mbid || item.name}
-				renderItem={({ item }) => (
-					<View style={styles.trackItem}>
-						<Text style={styles.trackName}>{item.name}</Text>
-						<Text style={styles.trackArtist}>{item.artist.name}</Text>
-					</View>
-				)}
+				renderItem={({ item }) => <TrackListItem />}
 			/>
 		</View>
 	)
