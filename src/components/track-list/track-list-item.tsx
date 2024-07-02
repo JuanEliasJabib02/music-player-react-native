@@ -4,11 +4,16 @@ import { defaultStyles } from '@/styles'
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import { Track, useActiveTrack } from 'react-native-track-player'
 
-export default function TrackListItem({ track }: { track: Track }) {
+type TracksListItemProps = {
+	track: Track
+	onTrackSelect: (track: Track) => void
+}
+
+export default function TrackListItem({ track, onTrackSelect }: TracksListItemProps) {
 	const isActiveTrack = false
 
 	return (
-		<TouchableHighlight>
+		<TouchableHighlight onPress={() => onTrackSelect(track)}>
 			<View style={styles.trackItemContainer}>
 				<View>
 					<Image

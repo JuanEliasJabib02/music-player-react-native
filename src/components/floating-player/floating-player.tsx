@@ -4,19 +4,21 @@ import { useRouter } from 'expo-router'
 import { Image, StyleSheet, Text, TouchableOpacity, View, ViewProps } from 'react-native'
 import { useActiveTrack } from 'react-native-track-player'
 import { PlayPauseButton } from './play-pause-button'
+import { useLastActiveTrack } from '@/hooks/use-last-active-track'
 /* import { MovingText } from './MovingText'
  */
 export default function FloatingPlayer({ style }: ViewProps) {
-	console.log('22')
-	const activeTrack = false
-	/* 	if (!activeTrack) return null
-	 */
+	const activeTrack = useActiveTrack()
+
+	const lastActiveTrack = useLastActiveTrack()
+
+	const displayedTrack = activeTrack ?? lastActiveTrack
 	return (
 		<TouchableOpacity activeOpacity={0.9} style={[styles.container, style]}>
 			<>
 				<Image style={styles.trackArtworkImage} source={{ uri: assets.unknown_image_track_uri }} />
 				<View style={styles.trackTitleContainer}>
-					<Text style={styles.trackTitle}>Nombre de la cancion</Text>
+					<Text style={styles.trackTitle}>{displayedTrack ? displayedTrack?.title : ''}</Text>
 				</View>
 				<View style={styles.trackControlsContainer}>
 					<PlayPauseButton />

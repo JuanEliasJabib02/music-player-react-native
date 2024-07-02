@@ -5,7 +5,7 @@ import TrackListItem from './track-list-item'
 import { TrackListProps } from './types'
 import ItemDivider from '../common/item-divider'
 import { fetcher } from '@/lib/utils'
-import { Track } from 'react-native-track-player'
+import TrackPlayer, { Track } from 'react-native-track-player'
 import { convertToTrackDTO, TrackDTO } from './track-dto'
 
 /* Only because this is a interview i gonna keep this apikey visible
@@ -36,6 +36,10 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 
 	const transformedTracks: TrackDTO[] = data.tracks.track.slice(0, 15).map(convertToTrackDTO)
 
+	const handleTrackSelect = async (track: Track) => {
+		await TrackPlayer.load(track)
+		await TrackPlayer.play()
+	}
 	return (
 		<View style={styles.container}>
 			<FlatList
@@ -43,7 +47,9 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 				/* I use 15 insteand 10 just to show the scroll */
 				data={transformedTracks}
 				keyExtractor={(item) => item.mbid || item.name}
-				renderItem={({ item: track }) => <TrackListItem track={track} />}
+				renderItem={({ item: track }) => (
+					<TrackListItem track={track} onTrackSelect={handleTrackSelect} />
+				)}
 				{...flatlistProps}
 			/>
 		</View>
