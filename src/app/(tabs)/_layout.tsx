@@ -23,7 +23,7 @@ export default function TabsNavigation() {
 				},
 				tabBarBackground: () => (
 					<BlurView
-						intensity={20}
+						intensity={30}
 						style={{
 							...StyleSheet.absoluteFillObject,
 							overflow: 'hidden',

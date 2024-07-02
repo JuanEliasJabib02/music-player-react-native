@@ -3,6 +3,8 @@ import { Text, View, FlatList, ActivityIndicator, StyleSheet, FlatListProps } fr
 import useSWR from 'swr'
 import TrackListItem from './track-list-item'
 import { Track, TrackListProps } from './types'
+import ItemDivider from '../common/item-divider'
+import { fetcher } from '@/lib/utils'
 
 /* Only because this is a interview i gonna keep this apikey visible
 
@@ -10,8 +12,6 @@ sensitive data must be saved in .env(scripted env)
 */
 const API_KEY = 'c19c47264b0dfd0973d63aa54cb6788c'
 const URL = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=colombia&api_key=${API_KEY}&format=json`
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export default function TrackList({ ...flatlistProps }: TrackListProps) {
 	const { data, error } = useSWR<{ tracks: { track: Track[] } }>(URL, fetcher)
@@ -35,6 +35,7 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 	return (
 		<View style={styles.container}>
 			<FlatList
+				ItemSeparatorComponent={ItemDivider}
 				/* I use 15 insteand 10 just to show the scroll */
 				data={data.tracks.track.slice(0, 15)}
 				keyExtractor={(item) => item.mbid || item.name}

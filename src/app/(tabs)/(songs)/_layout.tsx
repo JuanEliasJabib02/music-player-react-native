@@ -10,7 +10,7 @@ export default function SongsScreenLayout() {
 				<Stack.Screen
 					name="index"
 					options={{
-						headerTitle: 'Songs',
+						headerTitle: 'Top 15 Songs',
 						contentStyle: {
 							backgroundColor: '#000',
 						},
