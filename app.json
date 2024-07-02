@@ -1,29 +1,32 @@
 {
   "expo": {
     "name": "music-player-react-native",
-    "slug": "music-player-react-native",
+    "slug": "music-player-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
-    "schema":"music-player",
+    "schema": "music-player",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000"
     },
-	"ios": {
-			"supportsTablet": true,
-			"bundleIdentifier": "com.music.player",
-			"infoPlist": {
-				"UIBackgroundModes": ["audio"]
-			}
-		},
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.music.player",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000"
-      }
+      },
+      "package": "com.music.player"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,6 +37,14 @@
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "42e60786-0119-4cad-92d1-3f5440cfc136"
+      }
     }
   }
 }

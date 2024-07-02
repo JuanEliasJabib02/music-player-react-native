@@ -2,6 +2,7 @@ import { assets } from '@/constants/assets'
 import { colors, fontSize } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import { Track as TrackPlayer } from 'react-native-track-player'
 import { Track } from './types'
 
 export default function TrackListItem({ track }: { track: Track }) {
