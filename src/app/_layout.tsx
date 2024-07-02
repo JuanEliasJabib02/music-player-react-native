@@ -13,7 +13,7 @@ export default function App() {
 		SplashScreen.hideAsync()
 	}, [])
 	useSetupTrackPlayer({
-		onLoad: () => console.log('3'),
+		onLoad: () => handleTrackPlayerLoaded(),
 	})
 	return (
 		<SafeAreaProvider>
