@@ -14,6 +14,8 @@ export function convertToTrackDTO(track: any): TrackDTO {
 	return {
 		title: track.name,
 		artist: track.artist.name,
+
+		/* Api song that will be reproduted, actually i dont fint it in the respose so i mockeit */
 		url: track.name,
 	}
 }
