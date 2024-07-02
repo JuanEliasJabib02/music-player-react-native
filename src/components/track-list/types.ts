@@ -1,4 +1,5 @@
 import { FlatListProps } from 'react-native'
+import { Track as TrackPlayer } from 'react-native-track-player'
 
 export type Track = {
 	name: string

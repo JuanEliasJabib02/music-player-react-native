@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, FlatList, ActivityIndicator, StyleSheet, FlatListProps } from 'react-native'
+import { Text, View, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import useSWR from 'swr'
 import TrackListItem from './track-list-item'
 import { Track, TrackListProps } from './types'
@@ -39,7 +39,7 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 				/* I use 15 insteand 10 just to show the scroll */
 				data={data.tracks.track.slice(0, 15)}
 				keyExtractor={(item) => item.mbid || item.name}
-				renderItem={({ item: track }) => <TrackListItem track={track as Track} />}
+				renderItem={({ item: track }) => <TrackListItem track={track} />}
 				{...flatlistProps}
 			/>
 		</View>
