@@ -2,8 +2,7 @@ import { assets } from '@/constants/assets'
 import { colors, fontSize } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-import { Track as TrackPlayer } from 'react-native-track-player'
-import { Track } from './types'
+import { Track, useActiveTrack } from 'react-native-track-player'
 
 export default function TrackListItem({ track }: { track: Track }) {
 	const isActiveTrack = false
@@ -31,7 +30,7 @@ export default function TrackListItem({ track }: { track: Track }) {
 							color: isActiveTrack ? colors.primary : colors.text,
 						}}
 					>
-						{track.name}
+						{track.title}
 					</Text>
 					{true && (
 						<Text
@@ -40,7 +39,7 @@ export default function TrackListItem({ track }: { track: Track }) {
 								...styles.trackArtistText,
 							}}
 						>
-							{track.artist.name}
+							{track.artist}
 						</Text>
 					)}
 				</View>

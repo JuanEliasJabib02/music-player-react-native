@@ -2,9 +2,11 @@ import React from 'react'
 import { Text, View, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
 import useSWR from 'swr'
 import TrackListItem from './track-list-item'
-import { Track, TrackListProps } from './types'
+import { TrackListProps } from './types'
 import ItemDivider from '../common/item-divider'
 import { fetcher } from '@/lib/utils'
+import { Track } from 'react-native-track-player'
+import { convertToTrackDTO, TrackDTO } from './track-dto'
 
 /* Only because this is a interview i gonna keep this apikey visible
 
@@ -32,12 +34,14 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 		)
 	}
 
+	const transformedTracks: TrackDTO[] = data.tracks.track.slice(0, 15).map(convertToTrackDTO)
+
 	return (
 		<View style={styles.container}>
 			<FlatList
 				ItemSeparatorComponent={ItemDivider}
 				/* I use 15 insteand 10 just to show the scroll */
-				data={data.tracks.track.slice(0, 15)}
+				data={transformedTracks}
 				keyExtractor={(item) => item.mbid || item.name}
 				renderItem={({ item: track }) => <TrackListItem track={track} />}
 				{...flatlistProps}
