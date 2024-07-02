@@ -2,17 +2,11 @@ import { assets } from '@/constants/assets'
 import { colors, fontSize } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import { Track } from './types'
 
-type Track = {
-	name: string
-	artist: {
-		name: string
-	}
-}
 export default function TrackListItem({ track }: { track: Track }) {
 	const isActiveTrack = false
 
-	console.log('track', track)
 	return (
 		<TouchableHighlight>
 			<View style={styles.trackItemContainer}>

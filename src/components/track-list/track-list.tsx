@@ -1,7 +1,8 @@
 import React from 'react'
-import { Text, View, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
+import { Text, View, FlatList, ActivityIndicator, StyleSheet, FlatListProps } from 'react-native'
 import useSWR from 'swr'
 import TrackListItem from './track-list-item'
+import { Track, TrackListProps } from './types'
 
 /* Only because this is a interview i gonna keep this apikey visible
 
@@ -12,8 +13,8 @@ const URL = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-export default function TrackList() {
-	const { data, error } = useSWR(URL, fetcher)
+export default function TrackList({ ...flatlistProps }: TrackListProps) {
+	const { data, error } = useSWR<{ tracks: { track: Track[] } }>(URL, fetcher)
 
 	if (error) {
 		return (
@@ -36,7 +37,8 @@ export default function TrackList() {
 			<FlatList
 				data={data.tracks.track}
 				keyExtractor={(item) => item.mbid || item.name}
-				renderItem={({ item: track }) => <TrackListItem track={track} />}
+				renderItem={({ item: track }) => <TrackListItem track={track as Track} />}
+				{...flatlistProps}
 			/>
 		</View>
 	)

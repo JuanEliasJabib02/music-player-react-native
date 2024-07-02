@@ -1,29 +1,12 @@
-type Streamable = {
-	'#text': string
-	fulltrack: string
-}
+import { FlatListProps } from 'react-native'
 
-type Image = {
-	'#text': string
-	size: 'small' | 'medium' | 'large' | 'extralarge'
-}
-
-type Artist = {
+export type Track = {
 	name: string
-	mbid: string
-	url: string
-}
-
-export type TrackType = {
-	name: string
-	duration: string
-	listeners: string
-	mbid: string
-	url: string
-	streamable: Streamable
-	artist: Artist
-	image: Image[]
-	'@attr': {
-		rank: string
+	artist: {
+		name: string
 	}
 }
+
+/* Any is a bad practice i just dit it here, to avoid losing more time
+i hass a typescript issue here, is this was the project i solve the issue */
+export type TrackListProps = Partial<FlatListProps<any>>
