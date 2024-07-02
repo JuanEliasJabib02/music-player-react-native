@@ -2,20 +2,32 @@ import { assets } from '@/constants/assets'
 import { colors, fontSize } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-export default function TrackListItem() {
+
+type Track = {
+	name: string
+	artist: {
+		name: string
+	}
+}
+export default function TrackListItem({ track }: { track: Track }) {
 	const isActiveTrack = false
+
+	console.log('track', track)
 	return (
 		<TouchableHighlight>
-			<View>
+			<View style={styles.trackItemContainer}>
 				<View>
 					<Image
-						source={{ uri: assets.unknown_image_track_uri }}
+						source={{
+							uri: assets.unknown_image_track_uri,
+						}}
 						style={{
-							...styles.trackItemContainer,
+							...styles.trackArtworkImage,
 							opacity: isActiveTrack ? 0.6 : 1,
 						}}
 					/>
 				</View>
+
 				<View style={{ width: '100%' }}>
 					<Text
 						numberOfLines={1}
@@ -24,7 +36,7 @@ export default function TrackListItem() {
 							color: isActiveTrack ? colors.primary : colors.text,
 						}}
 					>
-						Track Title
+						{track.name}
 					</Text>
 					{true && (
 						<Text
@@ -33,7 +45,7 @@ export default function TrackListItem() {
 								...styles.trackArtistText,
 							}}
 						>
-							Track Title
+							{track.artist.name}
 						</Text>
 					)}
 				</View>
@@ -48,6 +60,7 @@ const styles = StyleSheet.create({
 		columnGap: 14,
 		alignItems: 'center',
 		paddingRight: 20,
+		marginVertical: 8,
 	},
 	trackPlayingIconIndicator: {
 		position: 'absolute',

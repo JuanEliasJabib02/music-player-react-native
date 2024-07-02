@@ -36,7 +36,7 @@ export default function TrackList() {
 			<FlatList
 				data={data.tracks.track}
 				keyExtractor={(item) => item.mbid || item.name}
-				renderItem={({ item }) => <TrackListItem />}
+				renderItem={({ item: track }) => <TrackListItem track={track} />}
 			/>
 		</View>
 	)
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff',
 	},
 	trackItem: {
 		padding: 10,
