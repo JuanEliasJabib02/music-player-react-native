@@ -12,9 +12,13 @@
       "resizeMode": "contain",
       "backgroundColor": "#000"
     },
-    "ios": {
-      "supportsTablet": true
-    },
+	"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.music.player",
+			"infoPlist": {
+				"UIBackgroundModes": ["audio"]
+			}
+		},
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

@@ -1,9 +1,7 @@
 import TrackList from '@/components/track-list/track-list'
-import { screenPadding } from '@/constants/tokens'
 import { defaultStyles } from '@/styles'
 import { useHeaderHeight } from '@react-navigation/elements'
-import { ScrollView, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { ScrollView, View } from 'react-native'
 
 export default function SongsScreen() {
 	const headerHeight = useHeaderHeight()
