@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
-    "schema": "music-player",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
