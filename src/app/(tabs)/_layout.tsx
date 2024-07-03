@@ -4,8 +4,10 @@ import { Tabs } from 'expo-router'
 import { StyleSheet } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import FloatingPlayer from '@/components/floating-player/floating-player'
+import { useActiveTrack } from 'react-native-track-player'
 
 export default function TabsNavigation() {
+	const activeTrack = useActiveTrack()
 	return (
 		<>
 			<Tabs
@@ -51,14 +53,9 @@ export default function TabsNavigation() {
 					}}
 				/>
 			</Tabs>
-			<FloatingPlayer
-				style={{
-					position: 'absolute',
-					left: 6,
-					right: 8,
-					bottom: 50,
-				}}
-			/>
+			{activeTrack && (
+				<FloatingPlayer style={{ position: 'absolute', left: 6, right: 8, bottom: 50 }} />
+			)}
 		</>
 	)
 }

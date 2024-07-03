@@ -1,42 +1,12 @@
 import React from 'react'
-import { Text, View, FlatList, ActivityIndicator, StyleSheet } from 'react-native'
-import useSWR from 'swr'
+import { View, FlatList, StyleSheet } from 'react-native'
 import TrackListItem from './track-list-item'
 import { TrackListProps } from './types'
 import ItemDivider from '../common/item-divider'
-import { fetcher } from '@/lib/utils'
 import TrackPlayer, { Track } from 'react-native-track-player'
-import { convertToTrackDTO, TrackDTO } from './track-dto'
 import { saveTrack } from '@/lib/async-storage/save-track'
 
-/* Only because this is a interview i gonna keep this apikey visible
-
-sensitive data must be saved in .env(scripted env)
-*/
-const API_KEY = 'c19c47264b0dfd0973d63aa54cb6788c'
-const URL = `https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=colombia&api_key=${API_KEY}&format=json`
-
-export default function TrackList({ ...flatlistProps }: TrackListProps) {
-	const { data, error } = useSWR<{ tracks: { track: Track[] } }>(URL, fetcher)
-
-	if (error) {
-		return (
-			<View style={styles.container}>
-				<Text>Error fetching data</Text>
-			</View>
-		)
-	}
-
-	if (!data) {
-		return (
-			<View style={styles.container}>
-				<ActivityIndicator size="large" color="#0000ff" />
-			</View>
-		)
-	}
-
-	const transformedTracks: TrackDTO[] = data.tracks.track.slice(0, 15).map(convertToTrackDTO)
-
+export default function TrackList({ tracks_data, ...flatlistProps }: TrackListProps) {
 	const handleTrackSelect = async (track: Track) => {
 		await TrackPlayer.load(track)
 		await saveTrack(track)
@@ -47,7 +17,7 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 			<FlatList
 				ItemSeparatorComponent={ItemDivider}
 				/* I use 15 insteand 10 just to show the scroll */
-				data={transformedTracks}
+				data={tracks_data}
 				keyExtractor={(item) => item.mbid || item.name}
 				renderItem={({ item: track }) => (
 					<TrackListItem track={track} onTrackSelect={handleTrackSelect} />

@@ -20,6 +20,6 @@ export function convertToTrackDTO(track: any): TrackDTO {
 		mbid: track.name,
 		name: track.name,
 		/* Api song that will be reproduted, actually i dont fint it in the respose so i mockeit */
-		url: track.name,
+		url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
 	}
 }
