@@ -5,12 +5,17 @@ import { TrackListProps } from './types'
 import ItemDivider from '../common/item-divider'
 import TrackPlayer, { Track } from 'react-native-track-player'
 import { saveTrack } from '@/lib/async-storage/save-track'
+import { useRecentTracks } from '@/lib/hooks/use-recent-tracks'
+import { useRecentTracksStore } from '@/store/track-store'
 
 export default function TrackList({ tracks_data, ...flatlistProps }: TrackListProps) {
+	const { fetchRecentTracks } = useRecentTracksStore()
+
 	const handleTrackSelect = async (track: Track) => {
 		await TrackPlayer.load(track)
 		await saveTrack(track)
 		await TrackPlayer.play()
+		fetchRecentTracks()
 	}
 	return (
 		<View style={styles.container}>

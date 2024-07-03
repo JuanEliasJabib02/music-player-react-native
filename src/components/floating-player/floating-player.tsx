@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router'
 import { Image, StyleSheet, Text, TouchableOpacity, View, ViewProps } from 'react-native'
 import { useActiveTrack } from 'react-native-track-player'
 import { PlayPauseButton } from './play-pause-button'
-import { useLastActiveTrack } from '@/hooks/use-last-active-track'
+import { useLastActiveTrack } from '@/lib/hooks/use-last-active-track'
 /* import { MovingText } from './MovingText'
  */
 export default function FloatingPlayer({ style }: ViewProps) {

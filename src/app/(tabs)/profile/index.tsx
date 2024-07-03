@@ -1,41 +1,40 @@
-import { TrackDTO } from '@/components/track-list/track-dto'
 import TrackList from '@/components/track-list/track-list'
+import { useRecentTracks } from '@/lib/hooks/use-recent-tracks'
+import { useRecentTracksStore } from '@/store/track-store'
 import { defaultStyles } from '@/styles'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useHeaderHeight } from '@react-navigation/elements'
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
 export default function ProfileScreen() {
 	const headerHeight = useHeaderHeight()
-	const [recentTracks, setRecentTracks] = useState<TrackDTO[]>([])
+
+	const { fetchRecentTracks, recentTracks, clearRecentTracks } = useRecentTracksStore()
 
 	useEffect(() => {
-		const fetchRecentTracks = async () => {
-			try {
-				const jsonValue = await AsyncStorage.getItem('recentTracks')
-				const tracks = jsonValue != null ? JSON.parse(jsonValue) : []
-				setRecentTracks(tracks)
-			} catch (e) {
-				console.error('Error fetching recent tracks', e)
-			}
-		}
-
 		fetchRecentTracks()
 	}, [])
 
+	console.log('executed')
 	if (!recentTracks) {
 		return (
 			<View style={styles.container}>
-				<ActivityIndicator size="large" color="#0000ff" />
+				<Text>There not are recent tracks</Text>
 			</View>
 		)
 	}
 
-	console.log(recentTracks, '')
+	const handleClearTracks = async () => {
+		await clearRecentTracks()
+	}
+
+	console.log(recentTracks, 'dsads-xxx')
 	return (
 		<View style={[defaultStyles.container, { marginTop: headerHeight }]}>
 			<ScrollView contentInsetAdjustmentBehavior="automatic">
+				<Text style={{ color: 'red', marginBottom: 20 }} onPress={handleClearTracks}>
+					Clear Recent Tracks
+				</Text>
 				<TrackList scrollEnabled={false} tracks_data={recentTracks} />
 			</ScrollView>
 		</View>

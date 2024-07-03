@@ -35,7 +35,7 @@ export default function SongsScreen() {
 		)
 	}
 
-	const transformedTracks: TrackDTO[] = data.tracks.track.slice(0, 15).map(convertToTrackDTO)
+	const transformedTracks: TrackDTO[] = data.tracks.track.slice(0, 20).map(convertToTrackDTO)
 
 	return (
 		<View style={[defaultStyles.container, { marginTop: headerHeight }]}>
