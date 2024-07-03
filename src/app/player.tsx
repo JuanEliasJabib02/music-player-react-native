@@ -50,6 +50,12 @@ export default function PlayerScreen() {
 						</View>
 					</View>
 				</View>
+				<View>
+					<Text style={{ color: 'red' }}>
+						Podria implementar mas features y mejorar esta vista pero por tiempo pasare a resolver
+						directamente el ultimo punto ya que aqui queda listo este requerimento de navegacion.
+					</Text>
+				</View>
 			</View>
 		</View>
 	)
