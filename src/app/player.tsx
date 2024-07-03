@@ -1,7 +1,7 @@
 import { assets } from '@/constants/assets'
 import { colors, fontSize, screenPadding } from '@/constants/tokens'
 
-import { defaultStyles, utilsStyles } from '@/styles'
+import { defaultStyles } from '@/styles'
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useActiveTrack } from 'react-native-track-player'
@@ -29,7 +29,7 @@ export default function PlayerScreen() {
 					/>
 				</View>
 				<View style={{ flex: 1 }}>
-					<View style={{ marginTop: 'auto' }}>
+					<View style={{ marginTop: 40 }}>
 						<View style={{ height: 60 }}>
 							<View
 								style={{

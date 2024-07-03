@@ -10,7 +10,10 @@ export default function ProfileScreenLayout() {
 				<Stack.Screen
 					name="index"
 					options={{
-						headerTitle: 'My Profile',
+						headerTitle: 'Mi perfil',
+						contentStyle: {
+							backgroundColor: '#000',
+						},
 						...StackScreenWithSearchBar,
 					}}
 				/>
