@@ -54,7 +54,7 @@ export default function TabsNavigation() {
 				/>
 			</Tabs>
 			{activeTrack && (
-				<FloatingPlayer style={{ position: 'absolute', left: 6, right: 8, bottom: 50 }} />
+				<FloatingPlayer style={{ position: 'absolute', left: 6, right: 8, bottom: 60 }} />
 			)}
 		</>
 	)

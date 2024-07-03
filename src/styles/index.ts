@@ -6,7 +6,7 @@ export const defaultStyles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: colors.background,
 		paddingHorizontal: 16,
-		paddingVertical: 16,
+		paddingVertical: 32,
 	},
 	text: {
 		fontSize: fontSize.base,

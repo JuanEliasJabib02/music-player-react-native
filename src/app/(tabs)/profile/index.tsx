@@ -1,9 +1,9 @@
 import TrackList from '@/components/track-list/track-list'
-import { useRecentTracks } from '@/lib/hooks/use-recent-tracks'
+import { colors } from '@/constants/tokens'
 import { useRecentTracksStore } from '@/store/track-store'
 import { defaultStyles } from '@/styles'
 import { useHeaderHeight } from '@react-navigation/elements'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
 export default function ProfileScreen() {
@@ -15,7 +15,6 @@ export default function ProfileScreen() {
 		fetchRecentTracks()
 	}, [])
 
-	console.log('executed')
 	if (!recentTracks) {
 		return (
 			<View style={styles.container}>
@@ -34,6 +33,9 @@ export default function ProfileScreen() {
 			<ScrollView contentInsetAdjustmentBehavior="automatic">
 				<Text style={{ color: 'red', marginBottom: 20 }} onPress={handleClearTracks}>
 					Clear Recent Tracks
+				</Text>
+				<Text style={{ color: colors.text, marginBottom: 20 }} onPress={handleClearTracks}>
+					Ultimas canciones reproducidas
 				</Text>
 				<TrackList scrollEnabled={false} tracks_data={recentTracks} />
 			</ScrollView>
