@@ -9,12 +9,16 @@ import { useLastActiveTrack } from '@/hooks/use-last-active-track'
  */
 export default function FloatingPlayer({ style }: ViewProps) {
 	const activeTrack = useActiveTrack()
-
+	const router = useRouter()
 	const lastActiveTrack = useLastActiveTrack()
+
+	const handlePress = () => {
+		router.navigate('/player')
+	}
 
 	const displayedTrack = activeTrack ?? lastActiveTrack
 	return (
-		<TouchableOpacity activeOpacity={0.9} style={[styles.container, style]}>
+		<TouchableOpacity onPress={handlePress} activeOpacity={0.9} style={[styles.container, style]}>
 			<>
 				<Image style={styles.trackArtworkImage} source={{ uri: assets.unknown_image_track_uri }} />
 				<View style={styles.trackTitleContainer}>
