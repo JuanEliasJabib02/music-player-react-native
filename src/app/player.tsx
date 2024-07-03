@@ -49,6 +49,11 @@ export default function PlayerScreen() {
 							>
 								<View style={styles.trackTitleContainer}>
 									<Text style={styles.trackTitleText}>{activeTrack?.title}</Text>
+									{activeTrack.artist && (
+										<Text numberOfLines={1} style={[styles.trackArtistText]}>
+											{activeTrack.artist}
+										</Text>
+									)}
 								</View>
 							</View>
 						</View>
