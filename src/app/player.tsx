@@ -1,17 +1,8 @@
-/* import { MovingText } from '@/components/MovingText'
-import { PlayerControls } from '@/components/PlayerControls'
-import { PlayerProgressBar } from '@/components/PlayerProgressbar'
-import { PlayerRepeatToggle } from '@/components/PlayerRepeatToggle'
-import { PlayerVolumeBar } from '@/components/PlayerVolumeBar' */
-/* import { unknownTrackImageUri } from '@/constants/images'
- */ import { assets } from '@/constants/assets'
+import { assets } from '@/constants/assets'
 import { colors, fontSize, screenPadding } from '@/constants/tokens'
-/* import { usePlayerBackground } from '@/hooks/usePlayerBackground'
-import { useTrackPlayerFavorite } from '@/hooks/useTrackPlayerFavorite' */
+
 import { defaultStyles, utilsStyles } from '@/styles'
-import { FontAwesome } from '@expo/vector-icons'
-/* import { LinearGradient } from 'expo-linear-gradient'
- */ import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useActiveTrack } from 'react-native-track-player'
 
