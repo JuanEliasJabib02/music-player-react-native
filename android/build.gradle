@@ -2,6 +2,7 @@
 
 buildscript {
     ext {
+        androidXCore = "1.6.0" // <-- Add this line
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '34.0.0'
         minSdkVersion = Integer.parseInt(findProperty('android.minSdkVersion') ?: '23')
         compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '34')
