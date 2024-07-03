@@ -7,6 +7,7 @@ import ItemDivider from '../common/item-divider'
 import { fetcher } from '@/lib/utils'
 import TrackPlayer, { Track } from 'react-native-track-player'
 import { convertToTrackDTO, TrackDTO } from './track-dto'
+import { saveTrack } from '@/lib/async-storage/save-track'
 
 /* Only because this is a interview i gonna keep this apikey visible
 
@@ -38,6 +39,7 @@ export default function TrackList({ ...flatlistProps }: TrackListProps) {
 
 	const handleTrackSelect = async (track: Track) => {
 		await TrackPlayer.load(track)
+		await saveTrack(track)
 		await TrackPlayer.play()
 	}
 	return (
